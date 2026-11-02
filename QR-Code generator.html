@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            height: 100vh;
+            width: 100vw;
+          
+        }
+        .container{
+            background-color: rgb(205, 193, 209);
+            width: 40vw;
+            height: 70vh;
+            position: absolute;
+            border: 1px solid rgb(58, 50, 50);
+            
+            
+        }
+       h1{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-400%);
+        font-size:x-large;
+        color: rgb(8, 8, 8) ;
+       }
+       input{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-300%);
+        width: 40%;
+
+       }
+        button{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 35%;
+        height: 7%;
+
+       }
+       ::placeholder{
+        position: absolute;
+        left: 40px;
+        color: rgb(86, 86, 92);
+       }
+       #qrcode{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,+30%);
+       
+       }
+       .container button:hover{
+        background-color: black;
+        color: white;
+       }
+
+    #theWord{
+       color: black;
+        position: absolute;
+        top: 98%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code generator</h1>
+        <input type="text" id="text" placeholder="Enter the URL or Text">
+        <button onclick="generateQrCode()">Click to Generate QR Code</button>
+        <div id="qrcode">
+
+        </div>
+        <div id="theWord">
+            
+
+        </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        function generateQrCode(){
+            const text=document.getElementById("text").value;
+            const qrgenerator= document.getElementById("qrcode");
+
+            qrgenerator.innerHTML="";
+            if(text.trim() !==""){
+                new QRCode(qrgenerator,
+                    {
+                        text:text,
+                        width:150,
+                        height:150
+
+                    }
+                )
+            }document.getElementById("text").value="";
+             
+        document.getElementById("theWord").innerHTML=text;
+        }
+      
+    </script>
+</body>
+</html>
